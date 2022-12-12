@@ -1,0 +1,205 @@
+@import "src/variables";
+@import "src/vendor-prefixes";
+@import "src/animations";
+@import "src/mixins";
+// Note: does not render modal message with default font before selected font is downloaded
+// font-display: block, instead of swap.
+//TODO maybe use fallback
+@import url('https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500display=block');
+
+// todo add larger screen support - values from "variables" folder
+
+$spinner-size: 3rem;
+$modal-text-color: black;
+$modal-text-shadow: 1px 1px 1px #FF979F;
+
+$modal-border-color: #FFF580;
+$modal-container-border: 10px solid lighten($modal-border-color, 10%);
+$modal-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.37);
+$modal-background-color: linear-gradient(to top left, rgba(255, 166, 103, 0.99), rgba(255, 180, 126, 0.97));
+
+$modal-button-color: black;
+$backdropBackgroundColor: rgba(0, 0, 0, 0.85);
+
+
+@mixin contact-box-design() {
+  @include flexColumnDisplay(center);
+  @include align-items(center);
+
+  background: lighten(#FFA667, 10%);
+  border: $modal-container-border;
+  border-radius: 1rem;
+  @include box-shadow($modal-box-shadow);
+
+  color: $modal-text-color;
+  text-shadow: $modal-text-shadow;
+  font-family: $font-family-heading;
+  font-weight: bold;
+
+  // todo choose
+  max-width: 30rem;
+}
+
+@mixin contact-button-design() {
+  cursor: pointer;
+  font-family: $font-family-heading;
+  font-size: $font-heading-small;
+  font-weight: bold;
+  color: $modal-button-color;
+
+  background: lighten($modal-border-color, 10%);
+  border: 2px solid $modal-text-color;
+  border-radius: 15px;
+  @include box-shadow($modal-box-shadow);
+
+  padding: 0.5rem;
+  margin: 1rem auto;
+  width: 80%;
+
+  &:hover, &:active {
+    color: lighten($modal-border-color, 10%);
+    background: $modal-text-color;
+    border-color: lighten($modal-border-color, 10%);
+  }
+}
+
+//backdrop + modal
+.backdrop {
+  @include backdropClosed($backdropBackgroundColor, $backdropTransitionDefault);
+  @include flexColumnDisplay(center);
+}
+
+.backdrop--open {
+  @include backdropOpen($backdropTransitionDefault)
+}
+
+// modal
+.modal__container {
+  @include contact-box-design();
+  @include align-self(center);
+
+  opacity: 0;
+  position: fixed;
+  top: 25%;
+  z-index: 120;
+
+  max-height: 20rem;
+  padding: 1rem;
+  margin: 1rem auto;
+
+  // todo add media queries for smaller values
+  height: 50%;
+  width: 80%;
+  min-height: 14rem;
+
+  @include fontSizeByDisplayWidth($font-content-huge, 1.6rem, $fontIncreaseScreenWidth);
+
+  text-align: center;
+
+  .modal__spinner {
+    border: 0.5rem solid #FFF267;
+    border-radius: 50%;
+    border-right-color: transparent;
+    width: $spinner-size;
+    height: $spinner-size;
+    min-height: $spinner-size;
+    margin: auto;
+
+    $animation-name: spin;
+    @include animate-transform-from-to($animation-name, rotate(0deg), rotate(360deg));
+    // todo change to @include animation
+    @include animation($animation-name 0.75s linear infinite);
+  }
+
+  .modal__message {
+    margin: auto;
+    @include fontSizeByDisplayWidth($font-content-large, $font-content-huge, $fontIncreaseScreenWidth);
+    font-weight: bold;
+  }
+
+  .modal__button {
+    @include contact-button-design();
+  }
+}
+
+
+.modal--open {
+  // todo change to transition like in header
+  $animate-modal: animate-modal;
+  @include animate-modal($animate-modal);
+  @include animation(animate-modal 1s ease-out forwards);
+}
+
+
+// contact
+.contact-container {
+  //todo
+  //$image-source: "../../assets/images/background-contact-compressed.jpg";
+  $image-source: "https://res.cloudinary.com/gmpro/image/upload/q_auto,f_auto/v1574352130/portfolio/background-contact_g2etyt.jpg";
+  $background-gradient-color: rgba(255, 180, 125, 0.32);
+  background: linear-gradient(to top, $background-gradient-color 30%, transparent), url($image-source) center/cover no-repeat;
+
+  // todo extract or customize
+  @include pageContainerStyle($pageContainerTopMargin, $pageContainerBotMargin);
+
+
+  .contact-title {
+    @include pageTitleName();
+  }
+
+  .contact-form__container {
+    width: 90%;
+    @include contact-box-design();
+    margin-bottom: 2rem;
+
+    .contact-form__title {
+      $formTitleShadow: 1px 1px 1px #FF979F;
+      @include quoteStyle($formTitleShadow);
+      @include fontSizeByDisplayWidth($font-heading-small, 1.8rem, $fontIncreaseScreenWidth);
+    }
+
+    form {
+      width: 100%;
+      padding: 0 1rem 1rem;
+
+
+      label {
+        @include fontSizeByDisplayWidth($font-heading-tiny, 1.3rem, $fontIncreaseScreenWidth);
+        margin-top: 1rem;
+        display: block;
+
+      }
+
+      input, textarea {
+        display: block;
+        font-family: $font-family-content;
+        width: 100%;
+
+        @include fontSizeByDisplayWidth(0.85, 1rem, $fontIncreaseScreenWidth)
+      }
+
+      @include flexColumnDisplay(center);
+
+      .form__submit-button {
+        @include contact-button-design();
+      }
+
+      //   todo make the error message visible
+      // todo work over design
+      .help-block {
+        font-size: 1rem;
+        background: rgba(238, 85, 83, 0.67);
+        padding: 0.3rem;
+        /*todo del?*/
+        display: inline-block;
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+      }
+    }
+
+    // form end
+  }
+
+  //  contact container end
+}
+

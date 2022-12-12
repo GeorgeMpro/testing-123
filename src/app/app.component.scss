@@ -1,0 +1,41 @@
+@import "src/variables";
+@import "src/vendor-prefixes";
+
+
+$header-height-mobile: 3.5rem;
+$header-height-large: 4rem;
+// Note: the value is from header.ts client width in px
+//todo which one?
+//$header-client-width-breakpoint: 25.875rem;
+$header-client-width-breakpoint: 27rem;
+
+:host {
+  @include display-grid();
+  grid-template: "header" $header-height-mobile "main" auto "footer" fit-content(8rem);
+  height: 100%;
+
+  // todo import font family
+  font-family: sans-serif;
+  @include media-min-width($header-client-width-breakpoint) {
+    grid-template: "header" $header-height-large "main" auto "footer" fit-content(8rem);
+  }
+}
+
+app-header {
+  grid-area: header;
+  position: fixed;
+  width: 100%;
+  height: $header-height-mobile;
+  z-index: 100;
+  @include media-min-width($header-client-width-breakpoint) {
+    height: $header-height-large;
+  }
+}
+
+.router-display-main {
+  grid-area: main;
+}
+
+app-footer {
+  grid-area: footer;
+}

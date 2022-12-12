@@ -1,0 +1,69 @@
+@mixin flexColumnDisplay($justContenDirection) {
+  @include display-flex();
+  @include flex-direction-column();
+  @include justify-content($justContenDirection);
+}
+
+@mixin fontSizeByDisplayWidth($normal, $large-display, $display-size) {
+  font-size: $normal;
+  @include media-min-width($display-size) {
+    font-size: $large-display;
+  }
+}
+
+
+@mixin pageContainerStyle($paddingTop,$paddingBottom) {
+  height: 100%;
+  @include display-flex();
+  @include flex-direction-column();
+  @include align-items(center);
+  padding: $paddingTop 0 $paddingBottom;
+}
+
+
+@mixin quoteStyle($textShadow) {
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: justify;
+  text-shadow: $textShadow;
+}
+
+// todo
+@mixin arrowNavigation($borderColor,$borderSize, $rotateAngle) {
+  border: solid $borderColor;
+  //border-width: 0 $borderSize $borderSize 0;
+  border-top: $borderSize solid $borderColor;
+  border-right: $borderSize solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 0 solid transparent;
+
+  display: block;
+  transform: rotate($rotateAngle);
+}
+
+// backdrop
+@mixin backdropClosed($background, $transition) {
+  visibility: hidden;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $background;
+  @include transition($transition);
+}
+
+@mixin backdropOpen($transition) {
+  z-index: 100;
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+  @include transition($transition);
+}
+
+// mobile menu
+@mixin mobileMenuTransition($transform, $transition) {
+  @include transform($transform);
+  @include transition($transition);
+}
+

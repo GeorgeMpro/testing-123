@@ -1,0 +1,66 @@
+@import "src/variables";
+@import "src/vendor-prefixes";
+@import "src/mixins";
+
+$increaseFontSizeWidth: 30rem;
+:host {
+  height: 100%;
+}
+
+.main-container {
+  //$image-source: "../../assets/images/background-main-compressed.jpg";
+  // todo q_auto sets the quality automatically f_auto sets the format
+  $image-source: "https://res.cloudinary.com/gmpro/image/upload/q_auto,f_auto/v1574352131/portfolio/background-main_p6xxx8.jpg";
+  $background-gradient-color: rgba(255, 180, 125, 0.32);
+  background: linear-gradient(to top, $background-gradient-color 30%, transparent), url($image-source) center / cover no-repeat border-box, rgba(219, 219, 219, 0.5);
+
+  @include pageContainerStyle($pageContainerTopMargin, $pageContainerBotMargin);
+  @include justify-content(center);
+
+  color: $heading-text-color;
+  text-shadow: $text-shadow-default;
+
+  .main-heading {
+    //todo
+    //@include page-title-name();
+    font-family: $font-family-heading;
+    font-weight: bold;
+    @include fontSizeByDisplayWidth($font-heading-large, 3rem, $increaseFontSizeWidth);
+
+  }
+
+  .main-subheading {
+    text-align: center;
+    font-family: $font-family-heading;
+    @include fontSizeByDisplayWidth($font-heading-small, 2rem, $increaseFontSizeWidth);
+
+    margin: 1rem;
+
+    a {
+      text-decoration: none;
+      color: #ffb27b;
+      font-weight: bold;
+
+      &:hover, &:active {
+        color: $link-active-color;
+      }
+    }
+  }
+
+  .main-content {
+    font-family: $font-family-content;
+    font-weight: bold;
+    @include fontSizeByDisplayWidth($font-content-huge, 2rem, $increaseFontSizeWidth);
+
+    margin: 0 1rem 2rem;
+  }
+
+  .content__paragraph {
+    text-align: justify;
+    margin-top: 1rem;
+  }
+
+  .content__paragraph--underline {
+    color: #ffecb3;
+  }
+}

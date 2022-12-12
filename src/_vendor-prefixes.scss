@@ -1,0 +1,104 @@
+// media queries
+@mixin media-min-width($width) {
+  @media (min-width: $width) {
+    @content
+  }
+}
+
+@mixin media-max-width($width) {
+  @media (max-width: $width) {
+    @content
+  }
+}
+
+// animations and transform
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+@mixin transition($property) {
+  -webkit-transition: $property;
+  -o-transition: $property;
+  transition: $property;
+}
+
+// flex
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin display-inline-flex() {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+@mixin flex-direction-column() {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@mixin align-items($direction) {
+  -webkit-box-align: $direction;
+  -ms-flex-align: $direction;
+  align-items: $direction;
+}
+
+@mixin align-content($direction) {
+  -ms-flex-line-pack: $direction;
+  align-content: $direction;
+}
+
+@mixin align-self($direction) {
+  -ms-flex-item-align: $direction;
+  -ms-grid-row-align: $direction;
+  align-self: $direction;
+}
+
+@mixin justify-content($direction) {
+  -webkit-box-pack: $direction;
+  -ms-flex-pack: $direction;
+  justify-content: $direction;
+}
+
+@mixin justify-content-flex-start() {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+@mixin justify-self-center() {
+  -ms-grid-column-align: center;
+  justify-self: center;
+}
+
+@mixin flex-wrap($direction) {
+  -ms-flex-wrap: $direction;
+  flex-wrap: $direction;
+}
+
+// grid
+@mixin display-grid() {
+  display: -ms-grid;
+  display: grid;
+}
+
+
+@mixin box-shadow($content) {
+  -webkit-box-shadow: $content;
+  box-shadow: $content;
+}

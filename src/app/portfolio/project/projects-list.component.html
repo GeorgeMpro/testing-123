@@ -1,0 +1,67 @@
+<!-- todo add is loading animation?-->
+
+<div class="project-list">
+
+    <div
+            *ngFor="let project of projects"
+            class="project">
+        <div class="title">
+            {{project.title}}
+        </div>
+
+        <div class="technologies">
+            <div class="technologies-title sub-heading">
+                {{project.technologies.length > 1 ? 'Technologies:' : 'Technology:'}}
+            </div>
+
+            <ul class="technologies-items">
+                <li class="technologies-item"
+                    *ngFor="let technology of project.technologies">
+                    {{technology}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="description">
+            <div class="description-title sub-heading">
+                Description:
+            </div>
+            <p *ngFor="let paragraph of project.description">
+                {{paragraph}}
+            </p>
+        </div>
+
+        <!--images-->
+        <div class="images">
+            <app-slide-show [images]="project.images"></app-slide-show>
+        </div>
+
+        <!--links-->
+        <div class="links">
+            <div class="links-title sub-heading">
+                Links:
+            </div>
+
+            <!--live-->
+            <div *ngIf="project.links.liveLink !=''"
+                 class="links-container__live">
+                <a [href]="project.links.liveLink"
+                   class="links-live links-background">
+                    <fa-icon [icon]="link" class="links-active"></fa-icon>
+                </a>
+            </div>
+            <!--source-->
+            <a *ngIf="project.links.GitHub !='' else sourceUnavailable"
+               [href]="project.links.GitHub"
+               class="links-source links-background">
+                <fa-icon class="links-active" [icon]="github"></fa-icon>
+            </a>
+            <ng-template #sourceUnavailable>
+                <fa-icon [icon]="eyeClosed"></fa-icon>
+                <div class="source-unavailable__text">
+                    *Source Code Private
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

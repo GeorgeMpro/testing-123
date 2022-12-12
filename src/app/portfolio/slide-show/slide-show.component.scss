@@ -1,0 +1,57 @@
+@import "src/mixins";
+@import "src/vendor-prefixes";
+@import "src/variables";
+
+$slideShowArrowSize: 1.5rem;
+// todo
+//$slideShowArrowColor: darken(rgba(255, 165, 100, 0.97), 5%);
+$slideShowArrowColor: #474747;
+
+:host {
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+  // todo choose height
+  max-height: 14rem;
+}
+
+.slideshow-container {
+
+  .image__arrows {
+    @include display-flex();
+    @include justify-content(center);
+    margin: 1rem auto;
+    max-width: 1rem;
+
+    .image__back-arrow {
+      @include arrowNavigation($slideShowArrowColor, $slideShowArrowSize, -45deg);
+    }
+
+    .image__forward-arrow {
+      @include arrowNavigation($slideShowArrowColor, $slideShowArrowSize, 135deg);
+    }
+
+    .image__first {
+      @include arrowNavigation(lighten($slideShowArrowColor, 25%), $slideShowArrowSize, -45deg);
+    }
+
+    .image__last {
+      @include arrowNavigation(lighten($slideShowArrowColor, 25%), $slideShowArrowSize, 135deg);
+    }
+  }
+
+  .image__item {
+    display: none;
+  }
+
+  .image__item--active {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.slideshow-container--inactive {
+  display: none;
+}

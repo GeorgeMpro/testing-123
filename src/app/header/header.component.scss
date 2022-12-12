@@ -1,0 +1,198 @@
+@import "src/variables";
+@import "src/vendor-prefixes";
+@import "src/mixins";
+@import "src/animations";
+
+/*TODO
+   2. cleanup mobile menu
+   3. finish hamburger animation/transition
+   4. cleanup + prefixes
+   5. extract all
+   */
+
+$backdropBackgroundColor: rgba(0, 0, 0, 0.7);
+
+$hamburger-transform: 405deg;
+$hamburger-menu-transition: 1s 0.1s cubic-bezier(0.43, -0.07, 0.16, 0.79) forwards;
+$mobileMenuTransition: transform 0.3s ease-out;
+
+
+:host {
+  background: $header-background-color;
+  height: 100%;
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+}
+
+// backdrop
+.backdrop {
+  @include backdropClosed($backdropBackgroundColor, $backdropTransitionDefault)
+}
+
+.backdrop--open {
+  @include backdropOpen($backdropTransitionDefault);
+
+}
+
+// mobile navigation
+.mobile-nav {
+  height: 50%;
+  position: relative;
+}
+
+.hamburger-menu {
+  border: transparent;
+
+  height: 3rem;
+  width: 3rem;
+  margin-left: 0.3rem;
+  margin-top: 0.2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  > span {
+    width: 100%;
+    // todo wider?
+    //height: 0.3rem;
+    height: 0.25rem;
+    background: black;
+    display: block;
+    margin: 0.6rem 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+.hamburger-menu--open {
+  position: relative;
+  height: 50%;
+  margin-top: 0.5rem;
+
+
+  z-index: 105;
+  width: 2.4rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  > span {
+    background: black;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+
+
+    &:first-child {
+      @include animate-hamburger-menu(trans-burger, rotate($hamburger-transform));
+
+      @include animation(trans-burger $hamburger-menu-transition);
+    }
+
+    &:nth-child(2) {
+      display: none;
+    }
+
+    &:last-child {
+      @include animate-hamburger-menu(trans-burger2, rotate(-$hamburger-transform));
+      @include animation(trans-burger2 $hamburger-menu-transition);
+    }
+  }
+}
+
+//mobile navigation menu
+.mobile-menu {
+  z-index: 101;
+  position: fixed;
+  top: 0;
+  background: white;
+  width: 80%;
+  height: 100vh;
+
+  @include mobileMenuTransition(translateX(-100%), $mobileMenuTransition);
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+    font-size: 1.5rem;
+
+    height: 50%;
+    @include display-flex();
+    @include flex-direction-column();
+    @include justify-content(space-evenly);
+
+    // todo DRY in a
+    li {
+      @include display-flex();
+      justify-content: center;
+
+      a {
+        color: black;
+        text-shadow: $text-shadow-default;
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+.mobile-menu--open {
+  @include mobileMenuTransition(translateY(0), $mobileMenuTransition);
+}
+
+// standard width navigation display
+.nav-items {
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @include display-flex();
+
+  @include media-min-width($display-min-width) {
+    @include align-items(center);
+  }
+}
+
+.nav-item {
+  margin: 0 1rem;
+  font-size: $font-heading-tiny;
+  font-weight: bold;
+
+  a {
+    // todo - box around active link
+    //padding: 0.3rem;
+    padding: 0.4rem;
+    color: $link-color;
+
+    text-decoration: none;
+    text-shadow: $link-text-shadow;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+
+  a:hover,
+  .router-link-active {
+    border-radius: 0.5rem;
+    background: $link-active-background-color;
+    color: $link-active-color;
+    border-bottom: 3px solid #ff7dc8;
+
+    text-shadow: 1px 1px 3px black;
+    @include box-shadow(2px 2px 2px 1px rgba(0, 0, 0, 0.36));
+  }
+
+
+}
+
+.nav-item--main {
+  width: 90%;
+  text-align: left;
+  padding-right: 0.5rem;
+}
+

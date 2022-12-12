@@ -1,0 +1,177 @@
+@import "src/variables";
+@import "src/vendor-prefixes";
+@import "src/mixins";
+
+$technology-border: 0.3rem outset #F2EFD9;
+$technology-background: #F2EFD9;
+$shadow-small: 1px 1px 1px rgba(0, 0, 0, 0.21);
+
+$min-width-large: 60rem;
+$min-width-extra-large: 75rem;
+$max-width-small: 29rem;
+
+:host {
+  font-family: $font-family-content;
+  @include display-flex();
+  @include justify-content(center);
+}
+
+.project-list {
+  width: 90%;
+  // todo del
+  //outline: red dashed;
+
+  @include display-flex();
+  @include flex-direction-column();
+
+  @include media-min-width($min-width-large) {
+    @include display-grid();
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+  }
+
+  @include media-min-width($min-width-extra-large) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.project {
+  @include flexColumnDisplay(center);
+
+  background: linear-gradient(45deg, #efefef, white);
+
+  border: 10px solid rgba(206, 206, 222, 0.44);
+  border-radius: 15px;
+  @include box-shadow(4px 4px 4px rgba(0, 0, 0, 0.45));
+
+  margin: 0 0.3rem 2.3rem;
+  padding: 0.7rem 1rem 0;
+
+  @include media-max-width($min-width-large) {
+    max-width: $max-width-small;
+    margin: 1rem auto;
+  }
+
+  @include media-min-width($min-width-large) {
+    max-width: $max-width-small;
+  }
+}
+
+.title {
+
+  text-align: center;
+  font-size: $font-heading-small;
+  font-weight: bold;
+  text-shadow: $text-shadow-default;
+}
+
+.sub-heading {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.36);
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+// technology
+.technologies-title {
+  font-size: $font-heading-tiny;
+  font-weight: bold;
+}
+
+.technologies-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @include display-flex();
+  @include justify-content-flex-start;
+  @include flex-wrap(wrap);
+
+  .technologies-item {
+    font-size: $font-tiny;
+    font-weight: bold;
+    padding: 0.3rem;
+
+    border: $technology-border;
+    background: $technology-background;
+    border-radius: 0.8rem;
+  }
+}
+
+// description
+// todo
+.description {
+  margin: 1rem 0;
+
+  .description-title {
+    font-size: $font-heading-tiny;
+    font-weight: bold;
+  }
+
+  > p {
+    margin: 0.3rem 0;
+    font-weight: 500;
+  }
+}
+
+// images
+// todo del? have other class for that
+//.images-multiple {
+//  // todo change
+//  height: 150px;
+//
+//  // todo
+//  @include display-flex();
+//  justify-content: center;
+//
+//  img {
+//    max-height: 100%;
+//  }
+//}
+
+// links
+.links {
+  margin-top: auto;
+
+  .links-title {
+    font-size: $font-heading-tiny;
+    font-weight: bold;
+  }
+
+  .links-container__live {
+    display: contents;
+  }
+
+  .links-background {
+    $circle-size: 50px;
+    position: relative;
+    background: $header-background-color;
+    height: $circle-size;
+    width: $circle-size;
+    border-radius: 50%;
+    @include box-shadow($shadow-small);
+    margin-bottom: 0.5rem;
+    @include display-inline-flex();
+    margin-right: 0.5rem;
+
+    &:focus, &:focus-within {
+      outline: none !important;
+    }
+  }
+
+  fa-icon {
+    font-size: 1.6rem;
+    color: black;
+    margin: auto;
+  }
+
+  .links-active {
+    &:hover, &:active {
+      color: $link-active-color;
+    }
+  }
+}
+
+.source-unavailable__text {
+  font-size: $font-tiny;
+  font-style: italic;
+  display: block;
+}

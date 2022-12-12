@@ -1,0 +1,51 @@
+// todo
+
+// todo extract to map
+// todo extract from app.scss the width that is in header.ts also
+// sizes and margins
+$display-min-width: 23.5rem;
+$pageContainerTopMargin: 1rem;
+$pageContainerBotMargin: 2rem;
+$fontIncreaseScreenWidth: 30rem;
+
+$heading-text-color: white;
+
+// font
+// todo update to @font-face: { font-display
+$font-family-heading: 'Roboto Slab', serif;
+$font-heading-large: 2rem;
+$font-heading-small: 1.4rem;
+$font-heading-tiny: 1.2rem;
+$font-family-content: 'Hind Vadodara', sans-serif;
+$font-content-huge: 1.4rem;
+$font-content-large: 1.2rem;
+$font-tiny: 0.8rem;
+
+$text-shadow-default: 2px 2px 2px rgba(0, 0, 0, 0.36);
+
+// transition and animation variables
+$backdropTransitionDefault: all 0.5s linear;
+
+
+// todo extract to mixin file
+@mixin pageTitleName {
+  @include display-flex();
+  margin: 2rem;
+  @include justify-content(center);
+  color: $heading-text-color;
+  text-shadow: $text-shadow-default;
+  font-family: $font-family-heading;
+  font-size: $font-heading-large;
+  font-weight: bold;
+}
+
+// navigation
+// todo change to opacity 1?
+$header-background-color: linear-gradient(to top left, darken(rgba(255, 181, 128, 0.99), 5%), lighten(rgba(255, 165, 100, 0.97), 5%));
+
+$link-color: #423f3f;
+$link-active-color: #fff57d;
+$link-active-background-color: #ff7d87;
+$link-text-shadow: 2px 2px 3px lighten($link-active-color, 5%);
+
+//$link-active-background-color: lighten($link-active-color, 35%);

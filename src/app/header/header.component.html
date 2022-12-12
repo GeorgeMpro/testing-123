@@ -1,0 +1,45 @@
+<div *ngIf="isMobileDisplay "
+     class="backdrop"
+     [ngClass]="{'backdrop--open':isMobileNavMenuOpen}"
+     (click)="onClickMobileMenuDisplay($event)"></div>
+
+
+<!--mobile nav-->
+<div class="mobile-nav" *ngIf="isMobileDisplay">
+    <button class="hamburger-menu"
+            [ngClass]="{'hamburger-menu--open':isMobileNavMenuOpen}"
+            (click)="onClickMobileMenuDisplay($event)">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!--mobile nav menu-->
+    <!-- todo extract to component-->
+    <div class="mobile-menu"
+         [ngClass]="{'mobile-menu--open':isMobileNavMenuOpen}"
+         (click)="onClickMobileMenuDisplay($event)">
+        <ul class="mobile-menu__items">
+            <li *ngFor="let link of links">
+                <a [routerLink]="link.address"
+                   routerLinkActive="router-link-active"
+                   [routerLinkActiveOptions]="{exact:true}">
+                    {{link.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--wide screen navigation-->
+<ul class="nav-items" *ngIf="!isMobileDisplay">
+    <li *ngFor="let link of links; let i=index"
+        class="nav-item"
+        [ngClass]="{'nav-item--main':i===0}">
+        <a [routerLink]="link.address"
+           routerLinkActive="router-link-active"
+           [routerLinkActiveOptions]="{exact:true}">
+            {{link.name}}
+        </a>
+    </li>
+</ul>

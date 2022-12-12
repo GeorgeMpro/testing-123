@@ -1,0 +1,105 @@
+@import "src/variables";
+@import "src/vendor-prefixes";
+@import "src/mixins";
+
+
+$skill-content-color: #67310afc;
+
+:host {
+  height: 100%;
+}
+
+.about-container {
+
+  // todo interesting idea
+  //background: linear-gradient(45deg, black, transparent);
+  //todo
+  //$image-source: "../../assets/images/background-about-compressed.jpg";
+  $image-source: "https://res.cloudinary.com/gmpro/image/upload/q_auto:low,f_auto/v1574352147/portfolio/background-about_oqllgm.jpg";
+  $background-gradient-color: rgba(255, 180, 125, 0.32);
+
+  color: $heading-text-color;
+  font-family: $font-family-content;
+
+  background: linear-gradient(to top, $background-gradient-color 30%, transparent), url($image-source) center / cover no-repeat border-box, rgba(219, 219, 219, 0.5);
+
+  @include pageContainerStyle($pageContainerTopMargin, $pageContainerBotMargin);
+
+
+  .page-title {
+    @include pageTitleName();
+  }
+
+
+  .skills-container {
+    //todo del
+    //outline: yellow dashed;
+    width: 90%;
+    max-width: 46rem;
+    margin-bottom: 3rem;
+    // todo check
+    padding: 1rem 1.5rem 2rem;
+    background: #ffd19b;
+    border-radius: 15px;
+    border: 10px solid #f9f9f9;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.37);
+
+    .skills__text {
+      @include flexColumnDisplay(center);
+      @include align-items(center);
+
+      .text-quote {
+        @include quoteStyle(none);
+        @include fontSizeByDisplayWidth($font-heading-small, 1.8rem, $fontIncreaseScreenWidth);
+        // todo
+        color: $skill-content-color;
+      }
+    }
+
+    .skills {
+      //todo del
+      //outline: green dashed;
+
+      @include display-flex();
+      // todo media query for mobile
+      @include flex-direction-column();
+
+
+      .skills-group__heading {
+        color: darken($skill-content-color, 3%);
+        font-family: $font-family-heading;
+        font-weight: bold;
+        @include fontSizeByDisplayWidth($font-content-large, 1.3rem, $fontIncreaseScreenWidth);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.36);
+
+        margin: 1rem 0 0.5rem;
+        border-bottom: 3px solid darken($skill-content-color, 5%);
+      }
+
+      .skill__items {
+        list-style: none;
+        display: block;
+        margin: 0;
+        padding: 0;
+        @include display-flex();
+        @include flex-wrap(wrap);
+        font-weight: bold;
+
+        .skill__item {
+          color: darken($skill-content-color, 10%);
+          text-shadow: none;
+          @include fontSizeByDisplayWidth(0.8rem, 1rem, $fontIncreaseScreenWidth);
+          font-weight: bold;
+
+          padding: 0.3rem;
+          margin-bottom: 0.3rem;
+          border: 0.3rem outset white;
+          background: #fffce6;
+          border-radius: 0.8rem;
+        }
+      }
+    }
+
+  }
+}
+
