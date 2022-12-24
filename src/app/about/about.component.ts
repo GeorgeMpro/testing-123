@@ -25,12 +25,14 @@ export class AboutComponent implements OnInit {
         'Java', 'C', 'Python', 'Node.js', 'Spring Boot', 'Spring MVC', 'Spring Data JPA', 'Spring Security', 'JUnit 5', 'Jest'
       ]
     },
-    {
-      name: 'Data Analysis',
-      skills: [
-        'Matplotlib'
-      ]
-    },
+    // todo add when done some courses
+    // {
+    //   name: 'Data Analysis',
+    //   skills: [
+    //     'Matplotlib'
+    //   ]
+    // }
+    // ,
     {
       name: 'Databases',
       skills: [
