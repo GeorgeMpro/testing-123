@@ -7,10 +7,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AboutComponent implements OnInit {
   // todo extract to model
-  skillSet: {
-    name,
-    skills: []
-  };
+  // skillSet: {
+  //   name,
+  //   skills: []
+  // };
 
   skillList = [
     {
@@ -24,7 +24,14 @@ export class AboutComponent implements OnInit {
       skills: [
         'Java', 'C', 'Python', 'Node.js', 'Spring Boot', 'Spring MVC', 'Spring Data JPA', 'Spring Security', 'JUnit 5', 'Jest'
       ]
-    }, {
+    },
+    {
+      name: 'Data Analysis',
+      skills: [
+        'Matplotlib'
+      ]
+    },
+    {
       name: 'Databases',
       skills: [
         'SQL', 'JDBC', 'MySQL']
