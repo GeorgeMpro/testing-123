@@ -14,17 +14,29 @@ export class AboutComponent implements OnInit {
 
   skillList = [
     {
-      name: 'Front End',
+      name: 'Languages',
       skills: [
-        'Angular 2+', 'RxJS', 'NgRX', 'JavaScript', 'TypeScript', 'CSS3 Responsive', 'SCSS', 'Jasmine'
+        'Java', 'Python', 'C', 'JavaScript'
       ]
     },
     {
-      name: 'Back End',
+      name: 'Frameworks and More',
       skills: [
-        'Java', 'C', 'Python', 'Node.js', 'Spring Boot', 'Spring MVC', 'Spring Data JPA', 'Spring Security', 'JUnit 5', 'Jest'
+        'Angular 2+', 'Node.js', 'Jasmine', 'Jest',
+        'Spring',  'JUnit 5', 'CSS3 Responsive', 'SCSS'
       ]
     },
+    {
+      name: 'Working Knowledge',
+      skills: [
+        'Vim', 'LaTex', ' Linux'
+      ]
+    },
+    {
+      name: 'Databases',
+      skills: [
+        'SQL', 'JDBC', 'MySQL']
+    }
     // todo add when done some courses
     // {
     //   name: 'Data Analysis',
@@ -33,11 +45,6 @@ export class AboutComponent implements OnInit {
     //   ]
     // }
     // ,
-    {
-      name: 'Databases',
-      skills: [
-        'SQL', 'JDBC', 'MySQL']
-    }
   ];
 
   constructor() {
