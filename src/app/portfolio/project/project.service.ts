@@ -12,8 +12,8 @@ export class ProjectService {
       .setupTechnologies('C')
       .setupImages(
         new Image('assets/images/lab-c/err3.png', 'Input Example'),
-        new Image('assets/images/lab-c/err3-2.png', 'Output Example'),
         new Image('assets/images/lab-c/err3-1.png', 'Output Example'),
+        new Image('assets/images/lab-c/err3-2.png', 'Output Example'),
         new Image('assets/images/lab-c/err3-3.png', 'Output Example'),
         new Image('assets/images/lab-c/err3-4.png', 'Output Example'),
         new Image('assets/images/lab-c/err3-5.png', 'Output Example')
