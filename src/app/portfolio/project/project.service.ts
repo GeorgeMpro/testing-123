@@ -8,6 +8,21 @@ import {Image} from '../slide-show/image';
 export class ProjectService {
 // todo add image creating method
   private projects: Project[] = [
+    new Project().createProject('Bloom Filter')
+      .setupTechnologies('Java', 'JUnit 5', 'Google Guava', 'Maven')
+      .setupImages(
+        new Image('assets/images/bloom-filter/1.png', 'Output Example'),
+        new Image('assets/images/bloom-filter/2.png', 'Output Example')
+      )
+      .setupDescription([
+        'The Open University 20407 - Data Structures and Introduction to Algorithms assignment (grade 99).',
+        'Implemented a Bloom Filter in Java to test false positive rates, using configurable parameters (m and k). Designed for fast membership checking with a bit array and multiple hash functions.',
+        'Developed with modular code for hash calculation, set management, and statistical reporting. Included JUnit tests for functionality verification, such as hash calculations, false positives, and file operations.',
+        'Emphasized efficiency and accuracy in probabilistic data structure behavior.'
+      ])
+      .setupLinks('https://github.com/GeorgeMpro/manma-maman-14.git', ''),
+
+
     new Project().createProject('C Preprocessor')
       .setupTechnologies('C')
       .setupImages(
@@ -19,7 +34,7 @@ export class ProjectService {
         new Image('assets/images/lab-c/err3-5.png', 'Output Example')
       )
       .setupDescription([
-        'Final project (grade 96) in The Open University 20465 - Systems Programming Laboratory',
+        'The Open University 20465 - Systems Programming Laboratory final project (grade 96)',
         'Developed a two-pass assembler in C that converts assembly code into machine language, handling symbol resolution, directives, and forward references.',
         'Designed with modular components for lexical analysis, symbol management, and binary output.',
         ' Prioritized efficient memory management and thorough error handling.',
