@@ -16,13 +16,13 @@ export class AboutComponent implements OnInit {
     {
       name: 'Languages',
       skills: [
-        'Java', 'Python', 'C', 'JavaScript'
+        'Python', 'Java', 'C', 'JavaScript'
       ]
     },
     {
       name: 'Frameworks and More',
       skills: [
-        'Angular 2+', 'Node.js', 'Jasmine', 'Jest',
+        'Pytest', 'Angular 2+', 'Node.js', 'Jasmine', 'Jest',
         'Spring', 'JUnit 5', 'CSS3 Responsive', 'SCSS'
       ]
     },

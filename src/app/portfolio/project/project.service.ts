@@ -8,6 +8,19 @@ import {Image} from '../slide-show/image';
 export class ProjectService {
 // todo add image creating method
   private projects: Project[] = [
+    new Project().createProject('Checkers CLI AI (Work In Progress)')
+      .setupTechnologies('Python', 'Pytest')
+      .setupImages(
+        new Image('assets/images/bloom-filter/1.png', 'Output Example'),
+        new Image('assets/images/bloom-filter/2.png', 'Output Example')
+      )
+      .setupDescription([
+        'A checkers game that utilizes player vs player, and player vs AI opponent.',
+        'Current state: Fully working checkers game with P vs P gameplay.',
+        'Upcoming features: Implement the Minmax algorithm with Alpha Beta Pruning.'
+      ])
+      .setupLinks('https://github.com/GeorgeMpro/checkersCLIWithAI', ''),
+
     new Project().createProject('Bloom Filter')
       .setupTechnologies('Java', 'JUnit 5', 'Google Guava', 'Maven')
       .setupImages(
