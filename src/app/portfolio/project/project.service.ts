@@ -11,12 +11,12 @@ export class ProjectService {
     new Project().createProject('Checkers CLI AI (Work In Progress)')
       .setupTechnologies('Python', 'Pytest')
       .setupImages(
-        new Image('assets/images/bloom-filter/1.png', 'Output Example'),
-        new Image('assets/images/bloom-filter/2.png', 'Output Example')
+        new Image('', ''),
       )
       .setupDescription([
-        'A checkers game that utilizes player vs player, and player vs AI opponent.',
-        'Current state: Fully working checkers game with P vs P gameplay.',
+        'A  checkers game that utilizes player vs player, and player vs AI opponent.',
+        'Built using the TDD paradigm, extensible, and adaptable.  ',
+        'Current state: Command Line Interface UI.  Fully working checkers game with P vs P gameplay. Undo functionality.',
         'Upcoming features: Implement the Minmax algorithm with Alpha Beta Pruning.'
       ])
       .setupLinks('https://github.com/GeorgeMpro/checkersCLIWithAI', ''),
