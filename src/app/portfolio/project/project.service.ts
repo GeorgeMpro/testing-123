@@ -8,18 +8,24 @@ import {Image} from '../slide-show/image';
 export class ProjectService {
 // todo add image creating method
   private projects: Project[] = [
-    new Project().createProject('Checkers CLI AI (Work In Progress)')
+    new Project().createProject('Checkers CLI with AI (Work In Progress)')
       .setupTechnologies('Python', 'Pytest')
       .setupImages(
-        new Image('', ''),
+        new Image('assets/images/checkers-cli-ai/1.png', ''),
+        new Image('assets/images/checkers-cli-ai/2.png', ''),
+        new Image('assets/images/checkers-cli-ai/3.png', ''),
+        new Image('assets/images/checkers-cli-ai/4.png', ''),
+        new Image('assets/images/checkers-cli-ai/5.png', ''),
       )
       .setupDescription([
-        'A  checkers game that utilizes player vs player, and player vs AI opponent.',
+        'A command-line Checkers game with an AI opponent.',
+        'Designed for both player vs. player and player vs. AI gameplay modes.',
+        'Current state: Command Line Interface (CLI) with player vs player gameplay.',
+        'Upcoming features: Integration of an AI opponent using the Minimax algorithm with Alpha-Beta Pruning.',
         'Built using the TDD paradigm, extensible, and adaptable.  ',
-        'Current state: Command Line Interface UI.  Fully working checkers game with P vs P gameplay. Undo functionality.',
-        'Upcoming features: Implement the Minmax algorithm with Alpha Beta Pruning.'
       ])
       .setupLinks('https://github.com/GeorgeMpro/checkersCLIWithAI', ''),
+
 
     new Project().createProject('Bloom Filter')
       .setupTechnologies('Java', 'JUnit 5', 'Google Guava', 'Maven')

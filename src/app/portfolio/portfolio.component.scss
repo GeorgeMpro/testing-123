@@ -12,6 +12,7 @@
   //$image-source: "https://res.cloudinary.com/gmpro/image/upload/q_auto/v1574352134/portfolio/background-portfolio_iuis0a.jpg";
   $image-source: "https://res.cloudinary.com/gmpro/image/upload/q_auto,f_auto/v1574352134/portfolio/background-portfolio_iuis0a.jpg";
 
+
   height: 100%;
   background: linear-gradient(to top, rgba(255, 180, 125, 0.36) 30%, transparent), url($image-source) center / cover no-repeat border-box, rgba(219, 219, 219, 0.5);
 
