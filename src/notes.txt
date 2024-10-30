@@ -1,0 +1,5 @@
+# how to build
+ng build --output-path docs --base-href="portfolio"
+
+
+
